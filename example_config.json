@@ -1,0 +1,14 @@
+{
+  "bind-address": "0.0.0.0",
+  "bind-port": 8070,
+  "container-file": "",
+  "daemon-address": "1.2.3.4",
+  "daemon-port": 11898,
+  "enable-cors": "*",
+  "init-timeout": 10,
+  "log-file": "service.log",
+  "log-level": 3,
+  "rpc-legacy-security": true,
+  "rpc-password": "",
+  "server-root": ""
+}

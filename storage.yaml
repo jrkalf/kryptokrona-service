@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kryptokrona-service
+spec:
+  storageClassName: nfs
+  capacity:
+    storage: 1Gi
+  nfs:
+    server: <your ip or fqdn>
+    path: /path/to/the/magic/
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kryptokrona-service
+  namespace: kryptokrona
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "1Gi"
+  volumeName: kryptokrona-service
+  storageClassName: nfs
+  volumeMode: Filesystem

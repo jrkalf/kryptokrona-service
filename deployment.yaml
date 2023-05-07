@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kryptokrona-service
+  name: kryptokrona-service
+  namespace: kryptokrona
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kryptokrona-service
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: kryptokrona-service
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - kryptokrona-service
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - image: jrkalf/kryptokrona-service:latest
+          env:
+            - name: NODE_ARGS
+              value: "--server-root /kryptokrona/config -c /kryptokrona/config/config.json"
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kryptokrona-service
+                  key: wallet-password
+          name: kryptokrona-service
+          command: ["/bin/sh"]
+          args: ["-c", "./kryptokrona-service $(NODE_ARGS) -p $(PASSWORD)"]
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+            requests:
+              memory: "1Gi"
+              cpu: "1"
+          volumeMounts:
+            - name: kryptokrona-service
+              mountPath: /kryptokrona/config
+          ports:
+            - containerPort: 8070
+              name: "inbound-traffic"
+      volumes:
+        - name: kryptokrona-service
+          persistentVolumeClaim:
+            claimName: kryptokrona-service
