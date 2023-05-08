@@ -7,10 +7,10 @@ When running a Kryptokrona (XKR) mining pool, you'll need a payment gateway / wa
 ## Quick reference
 - **Maintained by**: [Jelle Kalf](https://github.com/jrkalf)
 - **Supported architectures**: `arm64v8`, `amd64`
-- **Supported tags**: `latest`, `v1.1.1`
+- **Supported tags**: `latest`, `v1.1.1`, `v1.1.2`
 
 # What is the difference to Kryptokrona's Docker build?
-The Dockerfile here is available for learning and optimisation. Pre-built Docker images are available [here](https://hub.docker.com/repository/docker/jrkalf/kryptokrona-service/). These Dockerfiles are trimmed down to the bare minimum of running the blockchain node only. 
+The Dockerfile here is available for learning and optimisation. Pre-built Docker images are available [here](https://hub.docker.com/repository/docker/jrkalf/kryptokrona-service/). These Dockerfiles are trimmed down to the bare minimum of running the Payment Gateway Service only. 
 
 # How to use this image
 There are two ways of consuming the images:
@@ -43,7 +43,7 @@ In this directory you'll find 4 files you need to modify to run the Payment gate
 $ kubectl create ns kryptokrona
 ```
 
-*If you already run the [kryptokrona-xmrig miner](https://github.com/jrkalf/kryptokrona-xmrig/) in your kubernetes, chances are high you already have a namespace called kryptokrona.*
+*If you already run the [kryptokrona-xmrig miner](https://github.com/jrkalf/kryptokrona-xmrig/) or [kryptokrona-node](https://github.com/jrkalf/kryptokrona-node/) in your kubernetes, chances are high you already have a namespace called kryptokrona.*
 
 **Step 3:** Edit the [`deployment.yaml`](https://github.com/jrkalf/kryptokronan-service/blob/main/deployment.yaml) file. Things you may want to modify include:
 - `replicas`: number of desired pods to be running. As I run a 3 worker node Turing Pi cluster, I run 3 replica's
