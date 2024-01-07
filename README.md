@@ -7,7 +7,9 @@ When running a Kryptokrona (XKR) mining pool, you'll need a payment gateway / wa
 ## Quick reference
 - **Maintained by**: [Jelle Kalf](https://github.com/jrkalf)
 - **Supported architectures**: `arm64v8`, `amd64`
-- **Supported tags**: `latest`, `v1.1.1`, `v1.1.2`
+- **Supported tags**: `latest`, `v1.1.3`, ~`v1.1.2`~, ~`v1.1.1`~
+
+*Do not use older versions unless explicitely asked by the maintainers. Version 1.1.3 is the latest as of December 2023!*
 
 # What is the difference to Kryptokrona's Docker build?
 The Dockerfile here is available for learning and optimisation. Pre-built Docker images are available [here](https://hub.docker.com/repository/docker/jrkalf/kryptokrona-service/). These Dockerfiles are trimmed down to the bare minimum of running the Payment Gateway Service only. 
