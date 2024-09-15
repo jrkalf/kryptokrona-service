@@ -7,12 +7,13 @@
 
 ARG ARCH=
 FROM ${ARCH}ubuntu:22.04 as build
-ARG VERSION=v1.1.3
+ARG VERSION=v1.1.5
 
 # install build dependencies
 RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y \
+    && apt-get upgrade -y
+
+RUN apt-get install -yqq \
       build-essential \
       libssl-dev \
       libffi-dev \
@@ -20,11 +21,14 @@ RUN apt-get update \
       gcc-11 \
       g++-11 \
       git \
-      cmake \
+      cmake
+
+RUN apt-get install -yqq \
       librocksdb-dev \
       libboost-all-dev \
       libboost-system1.74.0 \
-      libboost-filesystem1.74.0 \
+      libboost-filesystem1.74.0
+RUN apt-get install -yqq \
       libboost-thread1.74.0 \
       libboost-date-time1.74.0 \
       libboost-chrono1.74.0 \
@@ -58,8 +62,9 @@ EXPOSE 8070
 WORKDIR /kryptokrona
 
 RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get -y install \
+    && apt-get upgrade -y
+
+RUN apt-get -yqq install \
         libffi8 \
         libssl3 \
         librocksdb6.11 \
