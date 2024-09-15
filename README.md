@@ -7,7 +7,7 @@ When running a Kryptokrona (XKR) mining pool, you'll need a payment gateway / wa
 ## Quick reference
 - **Maintained by**: [Jelle Kalf](https://github.com/jrkalf)
 - **Supported architectures**: `arm64v8`, `amd64`
-- **Supported tags**: `latest`, `v1.1.3`, ~`v1.1.2`~, ~`v1.1.1`~
+- **Supported tags**: `latest`, `v1.1.5`, `v1.1.3`, ~`v1.1.2`~, ~`v1.1.1`~
 
 *Do not use older versions unless explicitely asked by the maintainers. Version 1.1.3 is the latest as of December 2023!*
 
