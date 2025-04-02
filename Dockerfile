@@ -7,7 +7,7 @@
 
 ARG ARCH=
 FROM ${ARCH}ubuntu:22.04 as build
-ARG VERSION=v1.1.5
+ARG VERSION=v.1.1.7
 
 # install build dependencies
 RUN apt-get update \
